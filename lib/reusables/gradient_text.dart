@@ -5,11 +5,11 @@ class GradientText extends StatelessWidget {
     this.text, {
     super.key,
     required this.gradient,
-    required this.style,
+    this.style,
   });
 
   final String text;
-  final TextStyle style;
+  final TextStyle? style;
 
   final Gradient gradient;
 
@@ -22,7 +22,7 @@ class GradientText extends StatelessWidget {
             ),
         child: Text(
           text,
-          style: style
+          style: style ?? Theme.of(context).textTheme.bodyMedium
         ));
   }
 }
