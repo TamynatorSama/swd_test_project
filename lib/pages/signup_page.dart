@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:swd_project/pages/otp_page.dart';
 import 'package:swd_project/reusables/app_padding_wrapper.dart';
 import 'package:swd_project/reusables/auth_background.dart';
 import 'package:swd_project/reusables/custom_button.dart';
@@ -31,6 +33,7 @@ class SignUpPage extends StatelessWidget {
                           Icons.arrow_back_ios_new_rounded,
                           color: AppColor.textColor2,
                         ),
+                        const Gap(8),
                         Text(
                           "Back",
                           style: Theme.of(context)
@@ -107,7 +110,13 @@ class SignUpPage extends StatelessWidget {
                     validator: (_) => null,
                   ),
                   const Gap(27),
-                  const CustomButton(text: "Next"),
+                  CustomButton(text: "Next",onTap: (){
+                    Navigator.push(
+                              context,
+                              PageTransition(
+                                  child: const OtpPage(),
+                                  type: PageTransitionType.leftToRight));
+                  },),
                   const Gap(27),
                   Row(
                     children: [
@@ -129,7 +138,8 @@ class SignUpPage extends StatelessWidget {
                   const Gap(15),
                   Align(
                     alignment: Alignment.center,
-                    child: Text("Account information",style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColor.textColor2),))
+                    child: Text("Account information",style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColor.textColor2),)),
+                    Gap(MediaQuery.paddingOf(context).top + 5),
                 ],
               ))
             ],

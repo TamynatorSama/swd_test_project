@@ -56,7 +56,7 @@ class _AuthBackgroundState extends State<AuthBackground> {
                     decoration: const ShapeDecoration(
                         shape: CircleBorder(),
                         gradient: LinearGradient(
-                            stops: [0, 01],
+                            stops: [0, 1],
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
                             colors: [Color(0xffEF5858), Color(0xffFFAF65)])),
@@ -100,8 +100,8 @@ class _AuthBackgroundState extends State<AuthBackground> {
         ),
         BackdropFilter(
             filter: ImageFilter.blur(
-              sigmaX: 90,
-              sigmaY: 90,
+              sigmaX: 100,
+              sigmaY:100,
             ),
             child: widget.child)
       ],

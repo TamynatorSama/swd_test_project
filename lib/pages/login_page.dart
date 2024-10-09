@@ -23,14 +23,21 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                if(MediaQuery.sizeOf(context).height < 400)Gap(MediaQuery.paddingOf(context).top),
+                if (MediaQuery.sizeOf(context).height < 400)
+                  Gap(MediaQuery.paddingOf(context).top),
                 Container(
                   width: 100,
                   height: 100,
-                  decoration: ShapeDecoration(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),color: AppColor.accentColor),
+                  decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      color: AppColor.accentColor),
                 ),
                 const Gap(24),
-                Text("Welcome back 👋🏾",style: Theme.of(context).textTheme.titleLarge,),
+                Text(
+                  "Welcome back 👋🏾",
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
                 const Gap(72),
                 const CustomTextfield(
                   label: "Email address",
@@ -45,10 +52,15 @@ class LoginPage extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: IconButton(
-                    onPressed: (){},
-                    visualDensity: VisualDensity.compact,
-                    style: const ButtonStyle(padding: WidgetStatePropertyAll(EdgeInsetsDirectional.zero)),
-                    icon: Text("Forgot password?",style: Theme.of(context).textTheme.bodyMedium,)),
+                      onPressed: () {},
+                      visualDensity: VisualDensity.compact,
+                      style: const ButtonStyle(
+                          padding: WidgetStatePropertyAll(
+                              EdgeInsetsDirectional.zero)),
+                      icon: Text(
+                        "Forgot password?",
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      )),
                 ),
                 const Gap(32),
                 const CustomButton(text: "Sign in"),
@@ -58,10 +70,23 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text("I don’t have an account, "),
-                   InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const SignUpPage()));},
-                    child: GradientText("Create account", gradient: LinearGradient(colors: [AppColor.gradientPrimaryColor,AppColor.gradientSecondaryColor]),))
+                    InkWell(
+                        onTap: () {
+                          // Navigator.push(context, MaterialPageRoute(builder: (context)=>const SignUpPage()));
+                          // const SignUpPage()
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  child: const SignUpPage(),
+                                  type: PageTransitionType.leftToRight));
+                        },
+                        child: GradientText(
+                          "Create account",
+                          gradient: LinearGradient(colors: [
+                            AppColor.gradientPrimaryColor,
+                            AppColor.gradientSecondaryColor
+                          ]),
+                        ))
                   ],
                 )
               ],
