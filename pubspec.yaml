@@ -26,13 +26,17 @@ flutter:
   assets:
     - assets/icons/
     - assets/fonts/
+    - assets/images/
   fonts:
     - family: Aeonik
       fonts:
         - asset: assets/fonts/Aeonik-Light.otf
           weight: 200
+          
         - asset: assets/fonts/Aeonik-Medium.otf
           weight: 500
+        - asset: assets/fonts/Aeonik-Bold.otf
+          weight: 600
         - asset: assets/fonts/Aeonik-Regular.otf
           weight: 400
 

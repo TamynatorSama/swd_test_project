@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:pinput/pinput.dart';
 import 'package:swd_project/reusables/app_padding_wrapper.dart';
 import 'package:swd_project/reusables/auth_background.dart';
 import 'package:swd_project/reusables/custom_button.dart';
 import 'package:swd_project/reusables/expandable_scrollable_widget.dart';
+import 'package:swd_project/pages/router.dart';
 import 'package:swd_project/utils/app_colors.dart';
 
 class OtpPage extends StatelessWidget {
@@ -17,6 +19,7 @@ class OtpPage extends StatelessWidget {
             child: AppPaddingWrapper(
       child: ExpandableScrollableWidget(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Gap(MediaQuery.paddingOf(context).top + 20),
           InkWell(
@@ -58,50 +61,55 @@ class OtpPage extends StatelessWidget {
                   .bodyLarge
                   ?.copyWith(color: AppColor.textColor2))),
           const Gap(32),
-          Pinput(
-            validator: (value) {
-              if ((value ?? "").isEmpty || (value ?? "").length < 4) {
-                return "";
-              }
-              return null;
-            },
-            onCompleted: (value) {},
-            // controller: controller,
-            length:6,
-            separatorBuilder: (index) => index == 2
-                ? Text(
-                    " - ",
-                    style: Theme.of(context).textTheme.displayLarge,
-                  )
-                : const SizedBox.shrink(),
-            errorTextStyle: const TextStyle(fontSize: 0),
-            defaultPinTheme: PinTheme(
-                textStyle: Theme.of(context).textTheme.titleMedium,
-                width: 46,
-                height: 52,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: AppColor.accentColor,
-                    border: Border.all(width: 1, color: AppColor.borderColor))),
-            focusedPinTheme: PinTheme(
-                textStyle: Theme.of(context).textTheme.titleMedium,
-                width: 46,
-                height: 52,
-                decoration: BoxDecoration(
-                    color: AppColor.accentColor,
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(width: 1, color: AppColor.borderColor))),
-            errorPinTheme: PinTheme(
-                width: 46,
-                height: 52,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(
-                        width: 1, color: AppColor.gradientPrimaryColor))),
+          Align(
+            alignment: Alignment.center,
+            child: Pinput(
+              validator: (value) {
+                if ((value ?? "").isEmpty || (value ?? "").length < 4) {
+                  return "";
+                }
+                return null;
+              },
+              onCompleted: (value) {},
+              // controller: controller,
+              length:6,
+              separatorBuilder: (index) => index == 2
+                  ? Text(
+                      " - ",
+                      style: Theme.of(context).textTheme.displayLarge,
+                    )
+                  : index ==5? const SizedBox.shrink():const Gap(8),
+              errorTextStyle: const TextStyle(fontSize: 0),
+              defaultPinTheme: PinTheme(
+                  textStyle: Theme.of(context).textTheme.titleMedium,
+                  width: (MediaQuery.of(context).size.width /6.5) - 8,
+                  height: 52,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: AppColor.accentColor,
+                      border: Border.all(width: 1, color: AppColor.borderColor))),
+              focusedPinTheme: PinTheme(
+                  textStyle: Theme.of(context).textTheme.titleMedium,
+                  width: (MediaQuery.of(context).size.width /6.5) - (10*6),
+                  height: 52,
+                  decoration: BoxDecoration(
+                      color: AppColor.accentColor,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(width: 1, color: AppColor.borderColor))),
+              errorPinTheme: PinTheme(
+                  width: 46,
+                  height: 52,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                          width: 1, color: AppColor.gradientPrimaryColor))),
+            ),
           ),
           const Spacer(),
           const Gap(27),
-          const CustomButton(text: "Verify email"),
+          CustomButton(text: "Verify email",onTap: () => Navigator.pushAndRemoveUntil(context, PageTransition(
+                                  child: const RoutingPage(),
+                                  type: PageTransitionType.rightToLeft), (_)=>false),),
           const Gap(27),
           Row(
             children: [
@@ -133,7 +141,7 @@ class OtpPage extends StatelessWidget {
                     .bodyLarge
                     ?.copyWith(color: AppColor.textColor2),
               )),
-          Gap(MediaQuery.paddingOf(context).top + 5),
+          Gap(MediaQuery.paddingOf(context).top),
         ],
       )),
     )));

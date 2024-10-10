@@ -60,7 +60,7 @@ class _CustomButtonState extends State<CustomButton> {
                 borderRadius: BorderRadius.circular(8),
                 
                 gradient: LinearGradient(
-                        stops: const [0.2, 0.9],
+                        stops: const [0.6, 1],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [

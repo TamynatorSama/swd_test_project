@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:swd_project/pages/login_page.dart';
-import 'package:swd_project/reusables/app_theme.dart';
+import 'package:swd_project/pages/auth/login_page.dart';
+import 'package:swd_project/utils/app_theme.dart';
 
 void main() {
   runApp(const MainApp());

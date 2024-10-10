@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:swd_project/pages/otp_page.dart';
+import 'package:swd_project/pages/auth/otp_page.dart';
 import 'package:swd_project/reusables/app_padding_wrapper.dart';
 import 'package:swd_project/reusables/auth_background.dart';
 import 'package:swd_project/reusables/custom_button.dart';
@@ -115,7 +115,7 @@ class SignUpPage extends StatelessWidget {
                               context,
                               PageTransition(
                                   child: const OtpPage(),
-                                  type: PageTransitionType.leftToRight));
+                                  type: PageTransitionType.rightToLeft));
                   },),
                   const Gap(27),
                   Row(

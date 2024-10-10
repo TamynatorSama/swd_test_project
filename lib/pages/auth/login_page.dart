@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:swd_project/pages/signup_page.dart';
+import 'package:swd_project/pages/auth/signup_page.dart';
 import 'package:swd_project/reusables/app_padding_wrapper.dart';
 import 'package:swd_project/reusables/auth_background.dart';
 import 'package:swd_project/reusables/custom_button.dart';
 import 'package:swd_project/reusables/custom_textfield.dart';
 import 'package:swd_project/reusables/expandable_scrollable_widget.dart';
 import 'package:swd_project/reusables/gradient_text.dart';
+import 'package:swd_project/pages/router.dart';
 import 'package:swd_project/utils/app_colors.dart';
 
 class LoginPage extends StatelessWidget {
@@ -63,7 +64,12 @@ class LoginPage extends StatelessWidget {
                       )),
                 ),
                 const Gap(32),
-                const CustomButton(text: "Sign in"),
+                CustomButton(text: "Sign in",onTap: (){
+                  Navigator.pushAndRemoveUntil(context, PageTransition(
+                                  child: const RoutingPage(),
+                                  type: PageTransitionType.rightToLeft), (_)=>false);
+                  
+                },),
                 const Gap(32),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,7 +84,7 @@ class LoginPage extends StatelessWidget {
                               context,
                               PageTransition(
                                   child: const SignUpPage(),
-                                  type: PageTransitionType.leftToRight));
+                                  type: PageTransitionType.rightToLeft));
                         },
                         child: GradientText(
                           "Create account",
